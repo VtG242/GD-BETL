@@ -11,20 +11,33 @@ ETLDATESTART=`date +"%Y-%m-%d %H:%M:%S"`
 START=$(date +%s)
 PID=$$
 
-while getopts :hdp: option
+while getopts :hd option
 do
   case $option
     in
     d) DEBUG="true";;
     h) HELP="true";;
-    p) PROJECT=$OPTARG;;
     ?) echo "Unknown argument: -$OPTARG use -h for help, -d for turning on debug options and -p for changinging default project"
       exit
     ;;
   esac
 done
 
+if [ $HELP ];then
+ cat README.md
+ exit
+fi
+
+if [ "$PROJECT" == "" ] || [ "$WEBDAVDIR" == "" ] ;then
+  echo 'Variable $PROJECT and $WEBDAVDIR must be specified in configuration file auth.sh' 1>&2
+  exit
+fi
+
 echo "debug:$DEBUG"
+
+if [ $DEBUG ];then
+ echo "Update project \"$PROJECT\" from WebDav directory \"$WEBDAVDIR\"."
+fi
 
 function gettt() {
   curl --silent \

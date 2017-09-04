@@ -17,7 +17,7 @@ Bash client for load of data to GoodData project using etl/pull2 API call
 
 ## usage:
 
- ```gd-betl.sh -p xxxxx -w /dir/on/GD/WebDav```
+ ```gd-betl.sh -d -h```
 
 ### optional parameters:
 

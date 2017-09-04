@@ -17,7 +17,7 @@ do
     in
     d) DEBUG="true";;
     h) HELP="true";;
-    ?) echo "Unknown argument: -$OPTARG use -h for help, -d for turning on debug options and -p for changinging default project"
+    ?) echo "Unknown argument: -$OPTARG use -h for help, -d for turning on debug options"
       exit
     ;;
   esac
